@@ -8,6 +8,9 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Education from './components/Education';
 import Contact from './components/Contact';
+import CustomCursor from './components/CustomCursor';
+import FloatingUI from './components/FloatingUI';
+import ParticleNetwork from './components/ParticleNetwork';
 import './App.css';
 
 function App() {
@@ -27,15 +30,20 @@ function App() {
       </AnimatePresence>
       
       {showContent && (
-        <div className="app">
-          <Navbar />
-          <Hero />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Education />
-          <Contact />
-        </div>
+        <>
+          <CustomCursor />
+          <FloatingUI />
+          <ParticleNetwork />
+          <div className="app">
+            <Navbar />
+            <Hero />
+            <Experience />
+            <Projects />
+            <Skills />
+            <Education />
+            <Contact />
+          </div>
+        </>
       )}
     </>
   );

@@ -8,6 +8,7 @@
   overflow: hidden;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 2rem;
+  perspective: 1000px;
 }
 
 .particles {
@@ -62,6 +63,8 @@
 
 .hero-text {
   color: white;
+  will-change: transform;
+  transform-style: preserve-3d;
 }
 
 .hero-title {
@@ -74,6 +77,8 @@
   background-clip: text;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
   line-height: 1.1;
+  filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.3));
+  transition: all 0.3s ease;
 }
 
 .typing-container {
@@ -174,11 +179,14 @@
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .btn::before {
@@ -221,10 +229,25 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+.btn-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.4), transparent 70%);
+  border-radius: 50px;
+  filter: blur(10px);
+  pointer-events: none;
+}
+
 .hero-image {
   display: flex;
   justify-content: center;
   align-items: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .image-wrapper {
@@ -245,7 +268,9 @@
   justify-content: center;
   position: relative;
   animation: float 6s ease-in-out infinite;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+              0 0 80px rgba(251, 191, 36, 0.2);
+  transform-style: preserve-3d;
 }
 
 .floating-card::before {
@@ -281,18 +306,88 @@
   color: white;
   font-weight: 700;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-  animation: pulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.6));
+  will-change: transform;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    filter: brightness(1);
-  }
-  50% {
-    transform: scale(1.05);
-    filter: brightness(1.2);
-  }
+
+/* Floating Elements */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-element {
+  position: absolute;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.3), transparent);
+  border-radius: 50%;
+  filter: blur(30px);
+  will-change: transform;
+}
+
+.element-1 {
+  width: 150px;
+  height: 150px;
+  top: 10%;
+  left: 10%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.4), transparent);
+}
+
+.element-2 {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  right: 15%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.4), transparent);
+}
+
+.element-3 {
+  width: 120px;
+  height: 120px;
+  bottom: 30%;
+  left: 15%;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.4), transparent);
+}
+
+.element-4 {
+  width: 90px;
+  height: 90px;
+  bottom: 20%;
+  right: 20%;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.4), transparent);
+}
+
+.element-5 {
+  width: 130px;
+  height: 130px;
+  top: 50%;
+  left: 50%;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.3), transparent);
+}
+
+.element-6 {
+  width: 110px;
+  height: 110px;
+  top: 60%;
+  right: 10%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.3), transparent);
+}
+
+/* Orbit Particles */
+.orbit-particle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #fbbf24, rgba(251, 191, 36, 0.3));
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
 }
 
 .scroll-indicator {

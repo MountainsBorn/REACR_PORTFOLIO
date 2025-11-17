@@ -55,10 +55,21 @@ const SkillBar = ({ skill, index, categoryIndex }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: -50 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      initial={{ opacity: 0, x: -50, rotateX: -90 }}
+      animate={isInView ? { opacity: 1, x: 0, rotateX: 0 } : {}}
+      transition={{ 
+        duration: 0.6, 
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100
+      }}
       className="skill-item"
+      whileHover={{ 
+        scale: 1.02, 
+        x: 10,
+        boxShadow: "0 10px 30px rgba(102, 126, 234, 0.3)"
+      }}
+      style={{ transformStyle: "preserve-3d" }}
     >
       <div className="skill-info">
         <span className="skill-icon">{skill.icon}</span>
